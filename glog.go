@@ -775,3 +775,9 @@ func ExitContextDepth(ctx context.Context, depth int, args ...any) {
 func ExitContextDepthf(ctx context.Context, depth int, format string, args ...any) {
 	ctxexitf(ctx, depth+1, format, args...)
 }
+
+var logging fileSink
+
+func GetCurrentLogFileNames() []string {
+	return logging.getCurrentLogFileNames()
+}

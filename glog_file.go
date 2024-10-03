@@ -35,6 +35,8 @@ import (
 	"github.com/golang/glog/internal/logsink"
 )
 
+var G_programTag = ""
+
 // logDirs lists the candidate directories for new log files.
 var logDirs []string
 
@@ -95,10 +97,11 @@ func shortHostname(hostname string) string {
 // logName returns a new log file name containing tag, with start time t, and
 // the name for the symlink for tag.
 func logName(tag string, t time.Time) (name, link string) {
-	name = fmt.Sprintf("%s.%s.%s.log.%s.%04d%02d%02d-%02d%02d%02d.%d",
+	name = fmt.Sprintf("%s.%s.%s.log.%s.%s.%04d%02d%02d-%02d%02d%02d.%d",
 		program,
 		host,
 		userName,
+		G_programTag,
 		tag,
 		t.Year(),
 		t.Month(),
@@ -233,6 +236,21 @@ func (s *fileSink) Emit(m *logsink.Meta, data []byte) (n int, err error) {
 
 	return n, err
 }
+
+// ////////////////////////////
+func (s *fileSink) getCurrentLogFileNames() (fileNames []string) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	for i := 0; i < len(s.file); i++ {
+		f := s.file[i]
+		if f != nil && f.(*syncBuffer).file != nil {
+			fileNames = append(fileNames, f.(*syncBuffer).file.Name())
+		}
+	}
+	return
+}
+
+//////////////////////////////
 
 // syncBuffer joins a bufio.Writer to its underlying file, providing access to the
 // file's Sync method and providing a wrapper for the Write method that provides log
