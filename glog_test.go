@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/golang/glog/internal/logsink"
+	"github.com/weidesh/glog/internal/logsink"
 )
 
 // Test that shortHostname works as advertised.

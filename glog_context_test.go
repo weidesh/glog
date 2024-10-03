@@ -5,7 +5,7 @@ import (
 	"flag"
 	"testing"
 
-	"github.com/golang/glog/internal/logsink"
+	"github.com/weidesh/glog/internal/logsink"
 )
 
 type contextKey string

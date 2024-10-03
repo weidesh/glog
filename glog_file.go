@@ -32,7 +32,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/golang/glog/internal/logsink"
+	"github.com/weidesh/glog/internal/logsink"
 )
 
 var G_programTag = ""

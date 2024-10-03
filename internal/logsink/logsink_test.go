@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/golang/glog/internal/logsink"
-	"github.com/golang/glog/internal/stackdump"
 	"github.com/google/go-cmp/cmp"
+	"github.com/weidesh/glog/internal/logsink"
+	"github.com/weidesh/glog/internal/stackdump"
 )
 
 // A savingTextSink saves the data argument of the last Emit call made to it.

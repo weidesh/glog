@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/golang/glog/internal/stackdump"
+	"github.com/weidesh/glog/internal/stackdump"
 )
 
 var file string

@@ -113,8 +113,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/golang/glog/internal/logsink"
-	"github.com/golang/glog/internal/stackdump"
+	"github.com/weidesh/glog/internal/logsink"
+	"github.com/weidesh/glog/internal/stackdump"
 )
 
 var timeNow = time.Now // Stubbed out for testing.
